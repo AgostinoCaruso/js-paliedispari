@@ -8,20 +8,37 @@ Creare una funzione per capire se la parola inserita è palindroma
 */
 
 
-//Chiedo all'utente una parola
-const parolaUtente = prompt("Scrivi una parola per verificare se è palindroma!");
-let parolaInvertita="";
 
-if(isNaN(parolaUtente)){
-    for(let i = parolaUtente.length -1; i>=0;i--){
-        parolaInvertita += parolaUtente[i];
-        console.log(parolaInvertita + "=>"+ parolaUtente[i]);
+PalindromoGioco();
+
+
+
+
+
+
+
+
+//function 
+function PalindromoGioco() {
+    //Chiedo all'utente una parola
+    const parolaUtente = prompt("Scrivi una parola per verificare se è palindroma!");
+    let parolaGirata = "";//Inizializzo vuota una stringa
+
+    if (isNaN(parolaUtente)) {//verifico se l'utente abbia inserito una parola
+        parolaGirata = InvertiParola(parolaUtente, parolaGirata);//inverto la parola
+        if (parolaGirata == parolaUtente) {//confronto se le parola sono palindrome
+            console.log("Hai inserito una parola palindroma!");
+        } else {
+            console.log("Non hai inserito una parola palindroma ;/")
+        }
+    } else {
+        console.log("non hai inserito una parola");
     }
-    if(parolaInvertita == parolaUtente){
-        console.log("Hai inserito una parola palindroma!");
-    }else{
-        console.log("Non hai inserito una parola palindroma ;/")
+}
+function InvertiParola(parolaInserita, parolaInvertita) {
+    for (let i = parolaInserita.length - 1; i >= 0; i--) {
+        parolaInvertita += parolaInserita[i];
+        console.log(parolaInvertita + "=>" + parolaInserita[i]);
     }
-}else{
-    console.log("non hai inserito una parola");
+    return parolaInvertita;
 }
